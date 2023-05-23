@@ -24,7 +24,7 @@ app.get("/get_all_orders", (req, res) => {
 			res.status(500).send("Internal server error");
 			return;
 		}
-		client.query(`SELECT * FROM orders;`, (err, result) => {
+		client.query(`SELECT c.customer_name, r.recipe_name FROM customers c INNER JOIN orders o ON o.customer_id = c.id INNER JOIN recipes r ON o.recipe_id = r.id`, (err, result) => {
 			release();
 			if (err) {
 				console.error("Error in executing the query: ", err);
@@ -45,7 +45,7 @@ app.get("/get_order/:id", (req, res) => {
 			res.status(500).send("Internal service error");
 			return;
 		}
-		const sqlQuery = `SELECT * FROM orders WHERE id=$1;`;
+		const sqlQuery = `SELECT c.id, c.customer_name, r.id, r.recipe_name FROM customers c INNER JOIN orders o ON o.customer_id = c.id INNER JOIN recipes r ON o.recipe_id = r.id WHERE o.id = $1`;
 		const values = [id];
 		client.query(sqlQuery, values, (err, result) => {
 			release();
@@ -54,7 +54,7 @@ app.get("/get_order/:id", (req, res) => {
 				res.status(500).send("Internal server error");
 				return;
 			}
-			res.send(result.rows);
+res.send(result.rows)
 		});
 	});
 });
