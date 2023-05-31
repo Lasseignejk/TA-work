@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>EJS Template</title>
+    <%- include ('../partials/head'); %>
+</head>
+
+<body>
+    <%- include ('../partials/nav'); %>
+        <h1>Display All</h1>
+
+        <div>
+        <% userData.forEach((user) => { %>
+            <div>
+                <h3> 
+                    <%= user.name %>
+                </h3>
+                <p>
+                    <%= user.address %>
+                </p>
+                <p>
+                    <%= user.city %>
+                </p>
+                <p>
+                    <%= user.zipcode %>
+                </p>
+            </div>
+            
+        <% }) %>
+
+        </div>
+    
+
+
+</body>
+
+</html>

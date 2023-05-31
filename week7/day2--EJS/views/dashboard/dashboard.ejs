@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+    <%- include ('../partials/head'); %>
+</head>
+<body>
+    <%- include ('../partials/nav'); %>
+    <h1>Dashboard</h1>
+    <div class="card_container">
+        <% userData.forEach((user) => { %>
+            <div class="card">
+                <div class="card_image"></div>
+                <div class="card_profileImage"></div>
+                <div class="card_info">
+                <h2 class="text-center">
+                    <%= user.name %>
+                </h2>
+                <div class="text-center">
+                    <p class="company_name"><%= user.company.name %></p>
+                    <div class="flex gap justify-center">
+                    <p class="font_sm"><%= user.company.address %>,</p>
+                    <p class="font_sm"><%= user.company.city %>,</p>
+                    <p class="font_sm"><%= user.company.country %></p>
+                    </div>
+                </div>
+                <h3 class="text-center">Skills</h3>
+                <div class="flex justify-evenly">
+                    <% user.skills.forEach((skill) => { %>
+                        <p><%= skill %></p>
+                    <% }) %>
+                </div>
+                <h3 class="text-center">Projects</h3>
+                <div class="flex text-center">
+                    <% user.projects.forEach((project) => { %>
+                        <div>
+                        <p class="font_bold"><%= project.name %></p>
+                        <p class="font_sm"><%= project.description %></p>
+                        </div>
+                    <% }) %>
+                </div>
+                </div>
+            </div>
+        <% }) %>
+    </div>
+</body>
+</html>

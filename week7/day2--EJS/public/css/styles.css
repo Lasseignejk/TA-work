@@ -1,0 +1,94 @@
+h1 {
+    color: cornflowerblue;
+}
+body {
+    background-color: lavender;
+    font-family: 'Roboto', sans-serif
+}
+
+h3 {
+    padding-bottom: 0px;
+    margin-bottom: 0px;
+}
+
+.card_container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2rem;
+    justify-content: center;
+    padding-bottom: 30px;
+}
+
+.card {
+    display: flex;
+    flex-direction: column;
+    width: 300px;
+    box-shadow: 0px 5px 20px #52525a;
+    border-radius: 20px;
+    background-color: snow;
+    align-items: center;
+    position: relative;
+}
+
+.card_image {
+    width: 100%;
+    height: 150px;
+    background-image: url("https://images.unsplash.com/photo-1569091923578-399adee3f634?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1035&q=80");
+    background-position: center;
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+}
+
+.card_profileImage {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    box-shadow: 0px 10px 10px #b6b6b6;
+    position: absolute;
+    top: 100px;
+    background-color: snow;
+}
+
+.card_info {
+    padding: 20px;
+    padding-top: 40px;
+}
+
+.company_name {
+    font-weight: 700;
+    padding-bottom: 5px;
+    text-decoration: underline;
+}
+
+.font_sm {
+    font-size: small;
+}
+
+.flex {
+    display: flex;
+}
+
+.justify-evenly {
+    justify-content: space-evenly;
+}
+
+.justify-center {
+    justify-content: center;
+}
+
+.text-center {
+    text-align: center;
+}
+
+.font_bold {
+    font-weight: 700;
+}
+
+p {
+    padding: 0;
+    margin: 0;
+}
+
+.gap {
+    gap: 5px;
+}
