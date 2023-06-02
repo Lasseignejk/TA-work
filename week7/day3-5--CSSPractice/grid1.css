@@ -1,0 +1,59 @@
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.container {
+    display: grid;
+    width: 100%;
+    height: 500px;
+    grid-template-areas: 
+    "one one one three three"
+    "one one one four four"
+    "two two two two two"
+    "five six seven eight nine"
+    ;
+    gap: 10px;
+}
+
+.box {
+    display: grid;
+    place-content: center;
+    font-size: 3rem;
+}
+
+.one {
+    grid-area: one;
+    background-color: aliceblue;
+}
+.two {
+    grid-area: two;
+    background-color: snow;
+}
+.three {
+    grid-area: three;
+    background-color: lavenderblush;
+}
+.four {
+    grid-area: four;
+    background-color: honeydew;
+}
+.five {
+    grid-area: five;
+    background-color: lemonchiffon;
+}
+.six {
+    grid-area: six;
+    background-color: lavender;
+}
+.seven {
+    grid-area: seven;
+    background-color: lightcyan;
+}
+.eight {
+    grid-area: eight;
+    background-color: cornsilk;
+}
+.nine {
+    grid-area: nine;
+    background-color: whitesmoke;
+}
