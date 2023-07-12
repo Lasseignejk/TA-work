@@ -1,23 +1,23 @@
 import { useSelector, useDispatch } from "react-redux";
 import { increment, decrement, reset } from "./reducers/counterSlice";
-import { createClient } from "@supabase/supabase-js";
-import "./App.css";
 import { fetchPokemon } from "./reducers/pokeSlice";
 import { fetchProducts } from "./reducers/productsSlice";
+import {
+	useGetPokemonQuery,
+	useLazyGetPokemonQuery,
+} from "./reducers/pokemonCreateAPISlice";
 
 function App() {
-	const supabase = createClient(
-		import.meta.env.VITE_SUPABASE_URL,
-		import.meta.env.VITE_SUPABASE_KEY
-	);
-
 	const counter = useSelector((state) => state.counter.value);
 	const { value } = useSelector((state) => state.poke);
-
 	const { values } = useSelector((state) => state.products);
-
-	// console.log(values);
+	const [trigger, { data, isLoading, error }] = useLazyGetPokemonQuery();
 	const dispatch = useDispatch();
+
+	const handleClick = () => {
+		trigger();
+	};
+
 	return (
 		<div className="flex flex-col justify-center items-center gap-5">
 			<p className="text-5xl">{counter}</p>
@@ -43,6 +43,13 @@ function App() {
 			<div className="flex justify-center">
 				<button
 					className="border-green-400 bg-green-400 rounded-2xl px-3"
+					onClick={handleClick}>
+					Fetch Create API
+				</button>
+			</div>
+			<div className="flex justify-center">
+				<button
+					className="border-green-400 bg-green-400 rounded-2xl px-3"
 					onClick={() => dispatch(fetchProducts())}>
 					Fetch Products
 				</button>
@@ -62,6 +69,15 @@ function App() {
 							</div>
 						</div>
 					))}
+			</div>
+			<div>
+				{data && (
+					<ul>
+						{data.results.map((pokemon) => (
+							<li key={pokemon.name}>{pokemon.name}</li>
+						))}
+					</ul>
+				)}
 			</div>
 		</div>
 	);
